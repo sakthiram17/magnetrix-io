@@ -1,0 +1,25 @@
+.form-card{
+    background-color:ghostwhite;
+    font-weight: bold;
+    font: 1em sans-serif;
+    min-height: 300px;
+    max-width: min(800px,90vw);
+    margin:auto;
+    justify-content: center;
+    box-shadow: 0 2px 4px #999999;
+    border-radius: 1rem;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.form-card:active{
+    opacity:0.8;
+}
+.form-inductor-design{
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items:flex-start;
+}

@@ -1,0 +1,51 @@
+.form-number{
+    font-family: 'Arial', sans-serif;
+    font-size: 1rem;
+    padding: 10px 15px;
+    border: none;
+    font-weight:bold;
+    font-size: 17px;
+    padding:1rem;
+    margin: 1rem;
+    border-bottom: 2px solid rgb(202, 202, 202);
+    transition: 0.15 ease-in-out;
+}
+.form-number:focus{
+    outline: none;
+    border: 2px solid rgb(202, 202, 202);
+}
+
+.invalid{
+    font-family: 'Arial', sans-serif;
+    font-size: 1rem;
+    padding: 10px 15px;
+    border: 2px solid red;
+
+
+}
+.invalid:focus{
+    border: 2px solid red;
+
+}
+
+.form-label{
+    font-weight: bold;
+    font-family: 'Roboto','sans-serif';
+}
+.form-input{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    font-size: 1.2rem;
+ 
+}
+.generic-text-label{
+    font-weight: bold;
+    font-family: 'Roboto','sans-serif';
+    justify-content: center;
+    align-items: center;
+    margin:auto;
+    margin-top:1rem;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
