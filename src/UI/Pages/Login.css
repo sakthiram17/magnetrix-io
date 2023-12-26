@@ -1,0 +1,19 @@
+.login-card{
+    margin-left:auto;
+    margin-right: auto;
+    margin-top: 10%;
+    margin-bottom : 10%;
+    min-width: 60vw;
+    min-height: 400px;
+    background-color: ghostwhite;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 2px 6px, rgba(0, 0, 0, 0.24) 0px 2px 4px;
+    color:var(--primary-text);
+    width: min(500px,45vw);
+    margin-bottom: 20px;
+    border-radius: 0.4rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding:2rem;
+}

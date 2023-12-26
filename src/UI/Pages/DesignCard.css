@@ -1,0 +1,32 @@
+.design-card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    padding: 20px;
+    width: min(80vw,800px);
+    transition: transform 0.2s;
+    margin: auto;
+    font-size: 1.2rem;
+    margin-bottom: 4rem;
+    margin-top: 4rem;
+  }
+  
+  .design-card h3,
+  .design-card p {
+    margin: 0.5rem;
+  }
+  table{
+    margin-bottom: 5rem;
+  }
+  .table-card{
+    margin-bottom: 10rem;
+    border-radius: 1rem;
+    width: min(90vw,900px);
+    margin: auto;
+    box-shadow: 0 4px 6px #ccc;
+    margin-bottom: 10rem;
+    padding:2rem;
+  }
+  

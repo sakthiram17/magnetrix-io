@@ -9,11 +9,11 @@
   padding: 0.75rem 0.75rem;
   border-radius: 0.5rem;
   margin:0.5rem;
-  box-shadow: 1px 2px #999;
+  box-shadow: 1px 2px #ccc;
 }
 .btn-primary:active{
-    border-color:#df0068;
-    box-shadow: 0 4px 8px #df0068;
+    border-color:#ff008c;
+    box-shadow: 0 4px 8px #ccc;
 }
 
 .btn-secondary{
@@ -32,4 +32,50 @@
 .btn-secondary:active{
     border-color:#df0068;
     box-shadow: 0 4px 8px #df0068;
+}
+
+.btn-primary:disabled,
+.btn-primary[disabled]{
+  border: 1px solid #e2e2e2;
+  background-color: #797979;
+  color: white;
+}
+.core-design{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.btn-secondary:disabled,
+.btn-secondary[disabled]{
+  border: 1px solid #e2e2e2;
+  background-color: #797979;
+  color: white;
+}
+.checkbox-button {
+  appearance: none;
+  font-size: 1.5rem;
+  padding: 0.75rem 0.75rem;
+  border-radius: 0.5rem;
+  margin:0.5rem;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.checkbox-checked .checkbox-button::before {
+  color: #00f; /* Change color when checked */
+}
+.checkbox-checked{
+  appearance: none;
+  font-size: 1.5rem;
+  padding: 0.75rem 0.75rem;
+  border-radius: 0.5rem;
+  margin:0.5rem;
+  background-color: green;
+  border: 1px solid #ccc;
+  color:white;
+  padding: 8px 12px;
+  cursor: pointer;
 }

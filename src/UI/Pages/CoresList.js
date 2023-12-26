@@ -72,7 +72,7 @@ const CoreList = ()=>{
         c1 = {ele['SKU']}
         c2 = {ele['Core Area']}
         c3 = {ele['Window Area']}
-        c4 = {parseInt(ele['Window Area']*ele['Core Area'])}
+        c4 = {parseInt(ele['Window Area']*ele['Core Area']*2)}
         m = {4}
         key = {Math.random().toString(36).substring(2,7)}
         >

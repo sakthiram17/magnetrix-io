@@ -57,7 +57,8 @@ const DesignForm = (props)=>{
         peak: 0,
         rms : 0,
         windingFactor :0.2,
-        minWire:0
+        minWire:0,
+        title:''
 
     })
 
@@ -130,6 +131,12 @@ const DesignForm = (props)=>{
         }
       }
        
+      if(index==3)
+      {
+        let tempParameters = parameters;
+        tempParameters.title = event.target.value;
+        setParameters(tempParameters)
+      }
       setAreaProduct(calculateAreaProduct(
         parameters.inductance,parameters.rms,parameters.peak
        ))
@@ -141,7 +148,6 @@ const DesignForm = (props)=>{
           setAreaProduct(0);
         }
        setValidity(updatedValidity)
-       
        
     }
 
@@ -176,6 +182,14 @@ const DesignForm = (props)=>{
             ind = {2}
             handleChange= {NumberFieldOnChange}
             ></Input>
+              <Input
+            type = "text"
+            label = "Project Title (Optional)"
+            place = "Title "
+            valid = {true}
+            ind = {3}
+            handleChange= {NumberFieldOnChange}
+            ></Input>
              <button
              disabled = {!isValid[0] || !isValid[1] || !isValid[2]}
              className="btn-primary"
@@ -193,7 +207,7 @@ const DesignForm = (props)=>{
             {parameters.minWire ?<div className='generic-text-label'>
              Wire Required : {parameters.minWire}
            </div>: <div className="generic-text-label">
-            RMS current to high
+            
             </div>}
          
 

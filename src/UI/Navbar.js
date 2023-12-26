@@ -5,6 +5,8 @@ import './Navbar.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faDownload } from '@fortawesome/free-solid-svg-icons';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { useContext } from 'react';
+import AuthContext from './Context/auth-context';
 /*
 Guide to Use this Navbar
 props 
@@ -20,6 +22,7 @@ props
 */
 const Navbar = (props)=>{
     const [width,getWidth] = useState(window.innerWidth)
+    const loginContext = useContext(AuthContext);
     useEffect(()=>{
         window.addEventListener('resize',()=>{
             getWidth(window.innerWidth)
@@ -46,7 +49,29 @@ const Navbar = (props)=>{
             }
             else{
                 navList.push(<li onClick = {props.changePage }key = {i} className='NavbarElement'>{props.list[i]}</li>)
-        }}
+        }
+        if(props.list[i] == "Login")
+        {
+            if(loginContext.isLoggedIn===true)
+            {
+                navList.pop()
+            }
+            
+        }
+        
+    
+    
+    }
+
+        if(loginContext.isLoggedIn===true)
+        {
+            navList.push(<li onClick = {()=>{loginContext.logout();
+            props.changePageAlt("Design Tool")
+            }} key = {10} className='NavbarElement'>logout</li>) 
+            
+                
+              
+        }
        
     }
     else{
@@ -58,6 +83,7 @@ const Navbar = (props)=>{
         </button>
         )
     }
+    console.log(loginContext.credentials)
     const nav = (
         <div className='NavBar'>
         <div className= 'btn-grp'>
