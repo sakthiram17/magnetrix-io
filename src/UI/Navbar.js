@@ -7,6 +7,7 @@ import { faDownload } from '@fortawesome/free-solid-svg-icons';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { useContext } from 'react';
 import AuthContext from './Context/auth-context';
+import dp from "../dp.webp"
 /*
 Guide to Use this Navbar
 props 
@@ -72,7 +73,12 @@ const Navbar = (props)=>{
                 
               
         }
-       
+       if(loginContext.isLoggedIn)
+        { navList.push(<li onClick = {()=>{
+            props.changePageAlt("Your Profile")
+            }} key = {11} className='NavbarElement'><img src = {dp}
+            style = {{height : '2rem',width:'2rem',borderRadius:'2rem'}}
+              ></img></li>)} 
     }
     else{
         menuButton = (<button className = "menu-button" key = {24} onClick = {props.expand}>

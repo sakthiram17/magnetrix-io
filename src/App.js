@@ -17,6 +17,7 @@ import YourDesigns from './UI/Pages/YourDesigns';
 import Login from "./UI/Pages/Login"
 import AuthContext from './UI/Context/auth-context';
 import { useCallback } from 'react';
+import YourProfile from './UI/Pages/YourProfile';
 function App() {
   const [page,setPage] = useState(<DesignForm></DesignForm>)
   const [sidebaron,setSidebaron] = useState(false);
@@ -51,6 +52,9 @@ function App() {
         break;
       case 'Wires':
         setPage(<WiresList></WiresList>)
+        break;
+      case 'Your Profile':
+        setPage(<YourProfile></YourProfile>)
         break;
         default:setPage(<DesignForm></DesignForm>)
 

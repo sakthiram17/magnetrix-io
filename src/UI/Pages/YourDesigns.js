@@ -3,6 +3,8 @@ import DesignCard from "./DesignCard";
 import { useContext, useEffect, useState } from "react";
 import { useCallback } from "react";
 import AuthContext from "../Context/auth-context";
+import "./Login.css"
+import dp from "../../dp.webp"
 const YourDesigns = ()=>{
         const [designs,setDesigns] = useState([])
         const LoginContext = useContext(AuthContext);
@@ -32,7 +34,7 @@ const YourDesigns = ()=>{
             }
             if(data)
             {
-                setDesigns(Object.values(data))
+                setDesigns(Object.values(data).reverse())
             }
         }
         useEffect(()=>{
@@ -41,6 +43,9 @@ const YourDesigns = ()=>{
         console.log(designs)
         return(
         <div className="your-design-page">
+            
+
+
             {designs?designs.map((ele,index)=>{
                 return <DesignCard
                 key = {index}

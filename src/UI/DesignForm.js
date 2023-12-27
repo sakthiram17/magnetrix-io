@@ -49,7 +49,7 @@ const coreList = [
 
 
 const DesignForm = (props)=>{
-    const [isValid,setValidity] = useState([true,true,true])
+    const [isValid,setValidity] = useState([false,true,true])
     const [areaProduct,setAreaProduct ]= useState(0);
     const [rightCores,setRightCores] = useState([])
     const [parameters,setParameters] = useState({
@@ -62,7 +62,14 @@ const DesignForm = (props)=>{
 
     })
 
-
+    const removeCoreHandler = (core)=>{
+        let temp = [...rightCores]
+        temp = temp.filter((ele)=>{
+          return ele!=core;
+        })
+        console.log(temp)
+        setRightCores(temp)
+    }
     const coreDisplayHanlder = ()=>{
         let res = coreList.filter(
             (ele)=>{
@@ -82,7 +89,11 @@ const DesignForm = (props)=>{
         return Math.round((num/dem)*(10**12))
     }
     
-    
+    const sliderChangeHandler = (event)=>{
+      let temp = {...parameters}
+      temp.windingFactor = event.target.value/100
+      setParameters(temp);
+    }
     const NumberFieldOnChange = (event)=>{
         let flag = true;
         let minWire = '';
@@ -152,7 +163,7 @@ const DesignForm = (props)=>{
     }
 
     return(
-        <React.Fragment>
+        <div className="parent-container">
         <Card>
         <div className = 'form-inductor-design form-label'>
             
@@ -197,6 +208,9 @@ const DesignForm = (props)=>{
              >
              Show suitable Cores
             </button>
+            </div>
+          </Card>
+            <Card>
             {areaProduct ?
              <React.Fragment>
             <div className='generic-text-label'>
@@ -204,15 +218,22 @@ const DesignForm = (props)=>{
             </div> 
            </React.Fragment>
             : null}
+
+
             {parameters.minWire ?<div className='generic-text-label'>
              Wire Required : {parameters.minWire}
            </div>: <div className="generic-text-label">
-            
-            </div>}
+            </div>
+            }
+            <div>
+            <p className="generic-text-label">Winding Factor : {parameters.windingFactor}</p>
+            <input type="range" min="5" max="100" step = "5" className="slider"
+            onChange={sliderChangeHandler}
+            ></input>
+            </div>
          
-
-        </div>
-        </Card>
+            </Card>
+        
         
                <div>
                 {rightCores.map(ele=>{
@@ -221,13 +242,14 @@ const DesignForm = (props)=>{
                    <CoreData
                     core= {ele}
                     parameters = {parameters}
+                    removeCore = {removeCoreHandler}
                     >
                     </CoreData>
                     </Card>)
                 })}
             </div>
-     
-        </React.Fragment>
+            </div>
+
     )
 
 

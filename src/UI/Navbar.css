@@ -80,7 +80,7 @@ body{
 }
 .NavbarElement{
     text-decoration: none;
-    padding: 0.2em 1.5em 0.2em 1.5em;
+    padding: 0.2em 1em 0.2em 1em;
     display: inline-block;
     color:var(--navtext);
     transition: 0.15s;

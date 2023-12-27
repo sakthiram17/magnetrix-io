@@ -15,8 +15,9 @@ const DesignCard = ({ data }) => {
   
     return (
        <React.Fragment>
-        <h2><b>{name}</b></h2>
+        
         <div className="table-card">
+        <h2><b>{name}</b></h2>
         <table class="styled-table">
     <thead>
       <tr>

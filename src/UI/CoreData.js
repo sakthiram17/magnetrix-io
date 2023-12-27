@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import Constants from "./Constants";
 import Wire from "./Wire";
@@ -14,11 +14,16 @@ const CoreData = (props)=>{
         setTurns(Math.ceil(turn))
         designChecker()
     }
+    useEffect (()=>{
+        setTurns(null)
+    },[props.core])
     const [modalState,setModalState] = useState(null)
     const [spinner,setSpinner ] = useState(null)
     const [isValid,setValidity] = useState(true)
     const [turns,setTurns] = useState(null)
     const LoginContext = useContext(AuthContext);
+    
+    
     let length =  Math.ceil(turns) * props.core['Mean Turn Length']/10;
     if(!props.core)
     {
@@ -37,9 +42,10 @@ const CoreData = (props)=>{
     {
          resistance = Constants.rho*length*0.01*1000/(area*10**(-6));
     }
+    console.log(props.parameters)
     const designChecker = ()=>{
         let t1 = area*turns;
-        let t2 = Constants.winding_factor * props.core['Window Area'];
+        let t2 = props.parameters.windingFactor * props.core['Window Area'];
         if (t2>=t1)
         {
             setValidity(true)
@@ -135,14 +141,25 @@ const CoreData = (props)=>{
         }
          {isValid?
        <div>
-        <button className="btn-primary" onClick = {postData}>
+        {LoginContext.isLoggedIn?<button className="btn-primary" onClick = {
+            
+            ()=>{
+                postData()
+                props.removeCore(props.core)
+            }}>
             Save Design in Server
+        </button>:null}
+        
+        <button className="btn-primary" onClick = {()=>{
+            props.removeCore(props.core)
+        }}>
+            Discard
         </button>
-
        </div> : <div className='generic-text-label'>Invalid Design</div>
         }
         {spinner}
         {modalState}
+        
         </div>
     )
 
