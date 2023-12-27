@@ -218,10 +218,12 @@ const DesignForm = (props)=>{
             : null}
 
 
-            {parameters.minWire ?<div className='generic-text-label'>
+            {parameters.minWire ?
+            <div className='generic-text-label'>
              Wire Required : {parameters.minWire}
-           </div>: <div className="generic-text-label">
-            </div>
+           </div>: parameters.rms ? <div className="generic-text-label">
+            RMS current too High
+            </div>:null
             }
             <div>
             <p className="generic-text-label">Winding Factor : {parameters.windingFactor}</p>
