@@ -67,7 +67,6 @@ const DesignForm = (props)=>{
         temp = temp.filter((ele)=>{
           return ele!=core;
         })
-        console.log(temp)
         setRightCores(temp)
     }
     const coreDisplayHanlder = ()=>{
@@ -77,7 +76,6 @@ const DesignForm = (props)=>{
             }
         )
       
-        console.log(res)
         let temp = [...res];
         setRightCores(temp)
     }

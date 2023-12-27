@@ -8,6 +8,7 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { useContext } from 'react';
 import AuthContext from './Context/auth-context';
 import dp from "../dp.webp"
+import logo from "../UI/Pages/logo192.png"
 /*
 Guide to Use this Navbar
 props 
@@ -89,7 +90,6 @@ const Navbar = (props)=>{
         </button>
         )
     }
-    console.log(loginContext.credentials)
     const nav = (
         <div className='NavBar'>
         <div className= 'btn-grp'>
@@ -97,6 +97,7 @@ const Navbar = (props)=>{
         </div>
         <div className = {!is_small?'navbar-header':'small_nav-header'}
         >
+           
         <span className="header-f">{props.first}</span>
         <span className = "header-l">{props.last}</span>
         </div>

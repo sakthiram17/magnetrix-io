@@ -23,7 +23,7 @@ const SideBar = (props)=>{
         }} key = {11} className='NavbarElement'><img src = {dp}
         style = {{height : '2rem',width:'2rem',borderRadius:'2rem'}}
           ></img></li>)} 
-          
+
     for(var i = 0;i<props.list.length;i++)
     {
         if(props.list[i]==props.active)
@@ -64,7 +64,6 @@ const SideBar = (props)=>{
         <ul>
         <li className ='close-icon' onClick = {()=>{
             props.off();
-            console.log("Closing sidebar")
         }}>
             <FontAwesomeIcon icon = {faClose}></FontAwesomeIcon>
         </li>

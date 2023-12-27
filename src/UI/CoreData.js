@@ -42,7 +42,6 @@ const CoreData = (props)=>{
     {
          resistance = Constants.rho*length*0.01*1000/(area*10**(-6));
     }
-    console.log(props.parameters)
     const designChecker = ()=>{
         let t1 = area*turns;
         let t2 = props.parameters.windingFactor * props.core['Window Area'];
@@ -53,7 +52,7 @@ const CoreData = (props)=>{
         else{
             setValidity(false)
         }
-        console.log({t1:t1,t2:t2})
+
     }
 
     const postData = ()=>{

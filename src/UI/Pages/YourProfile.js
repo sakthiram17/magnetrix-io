@@ -6,18 +6,18 @@ import AuthContext from "../Context/auth-context";
 const YourProfile = (props)=>{
     const [designs,setDesigns] = useState([])
     const LoginContext = useContext(AuthContext);
-    console.log(LoginContext.credentials)
+    
     const fetchData = async ()=>{
         let resp;
         try{
             let url = LoginContext.credentials.email;
             url =url.replace(/[^a-zA-Z ]/g, "")
-            console.log(url)
+
             resp = await axios.get(`https://parkingslot-690a3-default-rtdb.firebaseio.com/Designs/${url}.json`)
         }
         catch(err)
         {
-            console.log(err)
+          
         }
         return resp.data;
     }

@@ -65,7 +65,7 @@ const Login = (props)=>{
                 {
         
                 } 
-            console.log(resp)
+
             setModal(<Modal code = "success">
             Created Account Successfully
             </Modal>)
@@ -82,18 +82,18 @@ const Login = (props)=>{
         {
 
         }
-        console.log(data)
+   
         if(data)
         {
             data = Object.values(data)
             
             if(data[0] && data[0].password === credentials.password)
             {
-                console.log("Sucesss")
+                
                 setModal(<Modal code = "success">
                     Logged in Successfully
                 </Modal>)
-                console.log("Sucesss")
+                
                 setTimeout(()=>{
                     setModal(null)
                     props.changePage('Design Tool')
@@ -110,7 +110,7 @@ const Login = (props)=>{
                 setModal(<Modal code = "error">
                   Login Attempt failed Try again later
                 </Modal>)
-                console.log("Sucesss")
+         
                 setTimeout(()=>{
                     setModal(null)
                 },1000)
@@ -120,7 +120,7 @@ const Login = (props)=>{
             setModal(<Modal code = "error">
              Login Attempt failed Try again later
             </Modal>)
-            console.log("Sucesss")
+         
             setTimeout(()=>{
                 setModal(null)
             },1000)
