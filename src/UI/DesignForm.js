@@ -6,6 +6,7 @@ import "./Buttons.css"
 import CoreData from "./CoreData";
 import React from "react";
 import Wire from "./Wire";
+import { useSpring, animated,useTransition } from 'react-spring';
 const coreList = [
     {
       "SKU": "ETD-29/16/10",
@@ -52,6 +53,8 @@ const DesignForm = (props)=>{
     const [isValid,setValidity] = useState([false,true,true])
     const [areaProduct,setAreaProduct ]= useState(0);
     const [rightCores,setRightCores] = useState([])
+    const [isVisible,setVisible] = useState(false)
+    const [mainPage,setMainPage] = useState(false)
     const [parameters,setParameters] = useState({
         inductance: 0,
         peak: 0,
@@ -62,6 +65,17 @@ const DesignForm = (props)=>{
 
     })
 
+    useEffect(()=>{
+      setMainPage(true)
+    },[])
+    const fadeIn = useSpring({
+      opacity: isVisible ? 1 : 0,
+      transform: isVisible ? 'scale(1)' : 'scale(0.5)',
+    });
+    const fadeInMain = useSpring({
+      opacity: mainPage ? 1 : 0,
+      transform: mainPage ? 'scale(1)' : 'scale(0.5)',
+    })
     const removeCoreHandler = (core)=>{
         let temp = [...rightCores]
         temp = temp.filter((ele)=>{
@@ -75,6 +89,7 @@ const DesignForm = (props)=>{
                 return ele["Area Product"]>=areaProduct;
             }
         )
+        setVisible(true)
       
         let temp = [...res];
         setRightCores(temp)
@@ -162,6 +177,7 @@ const DesignForm = (props)=>{
 
     return(
         <div className="parent-container">
+          <animated.div style = {fadeInMain}>
         <Card>
         <div className = 'form-inductor-design form-label'>
             
@@ -236,18 +252,26 @@ const DesignForm = (props)=>{
         
         
                <div>
-                {rightCores.map(ele=>{
-                   return ( 
-                   <Card>
-                   <CoreData
-                    core= {ele}
-                    parameters = {parameters}
-                    removeCore = {removeCoreHandler}
-                    >
-                    </CoreData>
-                    </Card>)
-                })}
+                {
+                rightCores.map((ele,index)=>{
+                  return ( 
+                    <Card >
+                     <animated.div 
+                     style={fadeIn}>
+                    <CoreData
+                     core= {ele}
+                     parameters = {parameters}
+                     removeCore = {removeCoreHandler}
+                     >
+                     </CoreData>
+                     </animated.div>
+                     </Card>)
+
+                })
+                  
+                }
             </div>
+            </animated.div>
             </div>
 
     )

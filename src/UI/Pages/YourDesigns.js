@@ -5,10 +5,15 @@ import { useCallback } from "react";
 import AuthContext from "../Context/auth-context";
 import "./Login.css"
 import dp from "../../dp.webp"
+import {animated,useSpring} from "react-spring"
 const YourDesigns = ()=>{
         const [designs,setDesigns] = useState([])
         const LoginContext = useContext(AuthContext);
-   
+        const [isVisible,setVisible] = useState(false);
+        const fadeIn = useSpring({
+            opacity: isVisible ? 1 : 0,
+            transform: isVisible ? 'scale(1)' : 'scale(0.5)',
+          });
         const fetchData = async ()=>{
             let resp;
             try{
@@ -39,22 +44,28 @@ const YourDesigns = ()=>{
         }
         useEffect(()=>{
             updateData()
+            setVisible(true)
         },[])
         console.log(designs)
         return(
+           
         <div className="your-design-page">
             
 
 
             {designs?designs.map((ele,index)=>{
-                return <DesignCard
+                return  <animated.div style = {fadeIn}>
+                <DesignCard
                 key = {index}
                 data = {ele}
                 >
 
                 </DesignCard>
+                </animated.div> 
+                
             }):null}
         </div>
+
         )
 
 

@@ -99,7 +99,7 @@ const CoreData = (props)=>{
     }
 
     return(
-    <div className = "core-design">
+    <div className = {`core-design + ${props.class}`}>
         <div className='generic-text-label'>
             {props.core['SKU']}
         </div>
