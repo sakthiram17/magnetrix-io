@@ -1,35 +1,60 @@
-# Magnetrix-io: High-Frequency Ferrite Inductor Design Web App
 
-Welcome to Magnetrix-io! This web application empowers users to design high-frequency ferrite inductors by specifying RMS current, peak current, and required inductance. The app provides a stylized form for inputting design parameters and presents a list of available ferrite cores. Users can then view design details for each core, including power losses and resistance associated with the specific design.
 
-## Table of Contents
-- [Features](#features)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-- [Usage](#usage)
-- [Design Process](#design-process)
-- [Contributing](#contributing)
-- [License](#license)
+# Magnetrix IO
 
-## Features
+Magnetrix IO is a web application that empowers users to design inductors tailored for high-frequency applications. With the ability to store designs in Firebase, users can access and manage their creations efficiently. The application also includes a profile section, offering insights into the user's email, name, design count, and status level (Pro or Rookie) based on their design activity.
 
-- **Stylized Forms:** Input RMS current, peak current, and required inductance through user-friendly forms.
-- **Core Selection:** Choose from a list of available ferrite cores based on design parameters.
-- **Design Details:** View detailed information for each core, including power losses and resistance.
-- **Visualization:** Explore 3D representations of the designed inductor for better understanding.
+## Pages
+
+### Profile
+
+Displays user profile information, including email, name, design count, and status level.
+
+### Your Designs
+
+Allows users to revisit and manage their previous inductor designs.
+
+### Core-Data
+
+Provides comprehensive information about the ferrite cores utilized in the designs.
+
+### Wires
+
+Offers details about the wires used in the inductor designs.
+
+### Design Tool
+
+The primary workspace for inductor design, providing users with the tools to create and customize designs.
+
+### Login
+
+Enables users to log in or create a new account to unlock additional features such as saving designs.
 
 ## Getting Started
 
-### Prerequisites
+To begin using Magnetrix IO, follow these simple steps:
 
-Before running Magnetrix-io, make sure you have the following installed:
+1. Visit the [Magnetrix IO website](https://www.magnetrix.io).
+2. Click on the "Login" button to create a new account or log in to an existing account.
+3. Once logged in, access the "Design Tool" page to start creating your inductor designs.
+4. Save your designs to the Firebase database using the "Save" button.
+5. View your previous designs on the "Your Designs" page.
+6. Explore additional information about ferrite cores and wires in the "Core-Data" and "Wires" pages.
+7. Check your profile information, including your design count and status level, on the "Profile" page.
 
-- [Web Browser](https://www.google.com/chrome/) - Google Chrome, Mozilla Firefox, or Microsoft Edge are recommended.
+## Contributing
 
-### Installation
+Contributions are welcome! If you find any issues or have suggestions for improvement, please open an issue or submit a pull request.
 
-1. Clone the repository:
+## License
 
-   ```bash
-   git clone https://github.com/your-username/magnetrix-io.git
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+
+## Acknowledgments
+
+- A big thank you to the Firebase team for providing a robust backend solution.
+- Special appreciation to the Node.js and React communities for their invaluable frameworks.
+
+---
+
+Feel free to further customize the README based on your specific project needs. Adding sections like "Demo," "Screenshots," or "Roadmap" could provide additional context and enhance the user's understanding of Magnetrix IO.
