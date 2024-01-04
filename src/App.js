@@ -16,13 +16,16 @@ import Modal from './UI/Modal';
 import YourDesigns from './UI/Pages/YourDesigns';
 import Login from "./UI/Pages/Login"
 import AuthContext from './UI/Context/auth-context';
-import { useCallback } from 'react';
+import { useCallback,useEffect } from 'react';
 import YourProfile from './UI/Pages/YourProfile';
 function App() {
   const [page,setPage] = useState(<DesignForm></DesignForm>)
   const [sidebaron,setSidebaron] = useState(false);
   const [isLoggedIn,setLoggedIn] = useState(false);
   const [credentials,setCredentials] = useState({})
+
+
+  
   const offSideBar = ()=>{
     setSidebaron(false)
   }
@@ -30,16 +33,37 @@ function App() {
     setSidebaron(true)
   }
   const login = useCallback(()=>{
-    setLoggedIn(true);
+   
+    setLoggedIn(true)
+    setTimeout(()=>
+    {
+      localStorage.setItem('login-state',JSON.stringify({credentials:credentials,isLoggedIn:true,from : 'login'}))
+     },200)
+
   },[])
   const logout = useCallback(()=>{
-    setLoggedIn(false);
+    localStorage.setItem('login-state',JSON.stringify({credentials:credentials,isLoggedIn:false,from : 'logout'}))
+    setLoggedIn(false)
+
     
   },[])
 
-  const setCreds = useCallback((credentials)=>{
-    setCredentials(credentials)
-    
+  const setCreds = useCallback((cred)=>{
+    setCredentials(cred)
+    setTimeout(()=>
+    {
+      localStorage.setItem('login-state',JSON.stringify({credentials:cred,isLoggedIn:true,from : 'login'}))
+     },200)
+  },[])
+  useEffect(()=>{
+    let loginStatus = JSON.parse(localStorage.getItem('login-state'));
+    if(loginStatus && loginStatus.isLoggedIn)
+    {
+      setCredentials(loginStatus.credentials)
+      setLoggedIn(loginStatus.isLoggedIn)
+    }
+
+
   },[])
   const pageChanger = (page)=>{
     switch(page)

@@ -99,7 +99,7 @@ const CoreData = (props)=>{
     }
 
     return(
-    <div className = {`core-design + ${props.class}`}>
+    <div className = {`core-design + ${props.class}`} style = {{...props.style,transition:'0.15s'}}>
         <div className='generic-text-label'>
             {props.core['SKU']}
         </div>
@@ -154,7 +154,17 @@ const CoreData = (props)=>{
         }}>
             Discard
         </button>
-       </div> : <div className='generic-text-label'>Invalid Design</div>
+       </div> : 
+       <React.Fragment> 
+
+        <button className="btn-primary" onClick = {()=>{
+            props.removeCore(props.core)
+        }}>
+            Discard
+        </button>
+        <div className='generic-text-label'>Invalid Design</div>
+       </React.Fragment>
+      
         }
         {spinner}
         {modalState}

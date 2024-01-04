@@ -1,11 +1,12 @@
 import Card from "./Card";
 import Input from "./Input";
-import { useEffect,useState } from "react";
-import Reacteact from "react";
+import { useEffect,useState,useReducer} from "react";
+
 import "./Buttons.css"
 import CoreData from "./CoreData";
 import React from "react";
 import Wire from "./Wire";
+import { v4 as uuid } from 'uuid';
 import { useSpring, animated,useTransition } from 'react-spring';
 const coreList = [
     {
@@ -65,28 +66,75 @@ const DesignForm = (props)=>{
 
     })
 
-    useEffect(()=>{
-      setMainPage(true)
-    },[])
-    const fadeIn = useSpring({
-      opacity: isVisible ? 1 : 0,
-      transform: isVisible ? 'scale(1)' : 'scale(0.5)',
-    });
-    const fadeInMain = useSpring({
-      opacity: mainPage ? 1 : 0,
-      transform: mainPage ? 'scale(1)' : 'scale(0.5)',
-    })
-    const removeCoreHandler = (core)=>{
-        let temp = [...rightCores]
-        temp = temp.filter((ele)=>{
-          return ele!=core;
-        })
-        setRightCores(temp)
+
+    const actionHandler = (prevState,action)=>{
+      let newStateObject = null;
+      console.log(prevState,action.type)
+      switch(action.type)
+      {
+          case 'ADD_ANIM':newStateObject = [...prevState];
+                          
+                          const lastTrueIndex = newStateObject.findIndex((ele) => ele.style);
+                          if (lastTrueIndex !== -1) {
+                            newStateObject[lastTrueIndex].style = null;
+                          }
+                          return newStateObject;
+
+          case 'ADD' :newStateObject= [...prevState]
+                      let core = action.core;
+                      core.style= {opacity:0.5,
+                        transform: "translateX(-40vw)",
+                                 transform : "scale(0.5)",
+                                 transition: '0.15s'
+                    };
+                      newStateObject.push(core)
+                     
+ 
+          return newStateObject;
+          
+          case 'DEL':newStateObject = [...prevState];
+                     newStateObject = newStateObject.filter(ele=>{
+                      return ele!=action.core;
+                     })
+          return newStateObject;
+          case 'DEL_ANIM' :newStateObject= [...prevState];
+                          for(var i = 0;i<newStateObject.length;i++)
+                            {
+                              if(action.core==newStateObject[i])
+                              {
+                                newStateObject[i].style= {opacity:0.5,
+                                  transform: "translateX(-40vw)",
+                                 transform : "scale(0.5)",
+                                 transition: '0.15s'
+                                };
+                              }
+                            }
+            return newStateObject;
+            case 'RESET': return []
+            
+                          }}
+    const simpleCoreAdder = (core)=>{
+      dispatch({type : 'ADD',core:core})
+      setTimeout(()=>{
+        dispatch({type : 'ADD_ANIM',core : core})
+      },150)
     }
-    const coreDisplayHanlder = ()=>{
+    const removeCoreHandler = (core)=>{
+      dispatch({type : 'DEL_ANIM',core:core})
+      setTimeout(()=>{
+        dispatch({type : 'DEL',core : core})
+      },150)
+    }
+
+    const [validCores,dispatch] = useReducer(actionHandler,[])
+    const coreDisplayHanlder= ()=>{
+        dispatch({type : 'RESET'})
         let res = coreList.filter(
             (ele)=>{
+                if(ele["Area Product"] >= areaProduct)
+                    simpleCoreAdder(ele)
                 return ele["Area Product"]>=areaProduct;
+
             }
         )
         setVisible(true)
@@ -172,12 +220,11 @@ const DesignForm = (props)=>{
           setAreaProduct(0);
         }
        setValidity(updatedValidity)
-       
+       dispatch({type : 'RESET'})
     }
 
     return(
         <div className="parent-container">
-          <animated.div style = {fadeInMain}>
         <Card>
         <div className = 'form-inductor-design form-label'>
             
@@ -253,25 +300,23 @@ const DesignForm = (props)=>{
         
                <div>
                 {
-                rightCores.map((ele,index)=>{
+                validCores&& validCores.map((ele,index)=>{
                   return ( 
                     <Card >
-                     <animated.div 
-                     style={fadeIn}>
+                  
                     <CoreData
                      core= {ele}
                      parameters = {parameters}
                      removeCore = {removeCoreHandler}
+                     style = {ele.style}
                      >
                      </CoreData>
-                     </animated.div>
                      </Card>)
 
                 })
                   
                 }
             </div>
-            </animated.div>
             </div>
 
     )

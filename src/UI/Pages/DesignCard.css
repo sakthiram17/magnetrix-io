@@ -1,5 +1,4 @@
 .design-card {
-    background-color: white;
     border: 1px solid #ddd;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -11,6 +10,7 @@
     font-size: 1.2rem;
     margin-bottom: 4rem;
     margin-top: 4rem;
+    
   }
   
   .design-card h3,
@@ -29,6 +29,51 @@
     margin-bottom: 10rem;
     padding:2rem;
     color:black;
-    background-color:  #ffffff;;
+    font-weight: bold;
+    text-align: center;
+    border:solid black  2px;
+    border-radius: 0;
   }
   
+  .table-card {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  
+  .styled-table th, .styled-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .styled-table th {
+  }
+  
+  .combined-table td {
+    vertical-align: top;
+    
+  }
+  
+  /* Additional styles for better readability */
+  h2 {
+    color: black;
+    
+    padding:1rem;
+  }
+  
+  strong {
+    color:  #0019a5;
+  }
+  .table-card td{
+    text-align:left;
+  }
+  .heading{
+    background-color:  #fd0e81;
+    color:white;
+    margin:0;
+  }

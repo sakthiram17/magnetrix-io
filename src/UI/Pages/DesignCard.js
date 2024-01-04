@@ -17,70 +17,42 @@ const DesignCard = ({ data }) => {
        <React.Fragment>
         
         <div className="table-card">
-        <h2><b>{name}</b></h2>
-        <table class="styled-table">
-    <thead>
-      <tr>
-        <th>Name of Design</th>
-        <th>Date</th>
-        <th>Length </th>
-        <th>Power</th>
-        <th>Resistance</th>
-        <th>Turns</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>{name}</td>
-        <td>{new Date(timestamp).toLocaleString()}</td>
-        <td>{Math.ceil(length)}cm</td>
-        <td>{power}W</td>
-        <td>{Math.ceil(resistance)} mΩ</td>
-        <td>{turns}</td>
-      </tr>
-    </tbody>
-  </table>
+  <h2><b> Title of the Design :  {name}</b></h2>
 
-  <h3>Core Information</h3>
-  <table class="styled-table">
-    <thead>
-      <tr>
-        <th>Area Product</th>
-        <th>Core Area</th>
-        <th>Mean Turn Length</th>
-        <th>SKU</th>
-        <th>Window Area</th>
-      </tr>
-    </thead>
+  <table className="styled-table combined-table">
     <tbody>
-      <tr>
-        <td>{core['Area Product']}</td>
-        <td>{core['Core Area']}</td>
-        <td>{core['Mean Turn Length']}</td>
-        <td>{core.SKU}</td>
-        <td>{core['Window Area']}</td>
+      <tr className="heading" id="heading">
+        <td><p className="heading" >Design Information</p></td>
+        <td><p className="heading" >Core Information</p></td>
+        <td><p className="heading"  >Parameters</p></td>
       </tr>
-    </tbody>
-  </table>
-
-  <h3>Parameters</h3>
-  <table class="styled-table">
-    <thead>
       <tr>
-        <th>Inductance</th>
-        <th>Min Wire</th>
-        <th>Peak</th>
-        <th>RMS</th>
-        <th>Winding Factor</th>
+        <td><strong>Name of Design:</strong> {name}</td>
+        <td><strong>Area Product:</strong> {core['Area Product']}</td>
+        <td><strong>Inductance:</strong> {parameters.inductance}µH</td>
       </tr>
-    </thead>
-    <tbody>
       <tr>
-        <td>{parameters.inductance}µH </td>
-        <td>{parameters.minWire}</td>
-        <td>{parameters.peak}A</td>
-        <td>{parameters.rms}A </td>
-        <td>{parameters.windingFactor}</td>
+        <td><strong>Date:</strong> {new Date(timestamp).toLocaleString()}</td>
+        <td><strong>Core Area:</strong> {core['Core Area']}</td>
+        <td><strong>Min Wire:</strong> {parameters.minWire}</td>
+      </tr>
+      <tr>
+        <td><strong>Length:</strong> {Math.ceil(length)}cm</td>
+        <td><strong>Mean Turn Length:</strong> {core['Mean Turn Length']}</td>
+        <td><strong>Peak:</strong> {parameters.peak}A</td>
+      </tr>
+      <tr>
+        <td><strong>Power:</strong> {power}W</td>
+        <td><strong>SKU:</strong> {core.SKU}</td>
+        <td><strong>RMS:</strong> {parameters.rms}A</td>
+      </tr>
+      <tr>
+        <td><strong>Resistance:</strong> {Math.ceil(resistance)} mΩ</td>
+        <td><strong>Window Area:</strong> {core['Window Area']}</td>
+        <td><strong>Winding Factor:</strong> {parameters.windingFactor}</td>
+      </tr>
+      <tr>
+        <td><strong>Turns:</strong> {turns}</td>
       </tr>
     </tbody>
   </table>

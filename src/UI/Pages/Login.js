@@ -101,8 +101,9 @@ const Login = (props)=>{
                 let temp = credentials;
                 temp.name = data[0].name;
                 setCredentials(temp)
-                loginContext.setCreds(credentials)
                 loginContext.login();
+                loginContext.setCreds(credentials)
+                
                 
 
             }
