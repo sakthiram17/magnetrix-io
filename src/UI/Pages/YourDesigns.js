@@ -6,10 +6,14 @@ import AuthContext from "../Context/auth-context";
 import "./Login.css"
 import dp from "../../dp.webp"
 import {animated,useSpring} from "react-spring"
+import LoadingSpinner from "../LoadingSpinner";
+import Modal from "../Modal";
 const YourDesigns = ()=>{
         const [designs,setDesigns] = useState([])
         const LoginContext = useContext(AuthContext);
         const [isVisible,setVisible] = useState(false);
+        const [spinner,setSpinner] = useState(null);
+        const [modal,setModal] = useState(null);
         const fadeIn = useSpring({
             opacity: isVisible ? 1 : 0,
             transform: isVisible ? 'scale(1)' : 'scale(0.5)',
@@ -28,6 +32,23 @@ const YourDesigns = ()=>{
             }
             return resp.data;
         }
+
+        const postData = async (filteredDesigns)=>{
+            let resp;
+            try{
+                let url = LoginContext.credentials.email;
+                url =url.replace(/[^a-zA-Z ]/g, "")
+      
+                resp = await axios.put(`https://parkingslot-690a3-default-rtdb.firebaseio.com/Designs/${url}.json`,
+                filteredDesigns)
+            }
+            catch(err)
+            {
+          
+            }
+            return resp.data;
+        }
+
         const updateData = async ()=>{
             let data;
             try{
@@ -42,26 +63,68 @@ const YourDesigns = ()=>{
                 setDesigns(Object.values(data).reverse())
             }
         }
+
+        const DeleteDataHandler = (title)=>{
+            let filteredDesigns = designs.filter(ele=>{
+                return ele.name !== title
+            })
+            
+           
+            setSpinner(<LoadingSpinner asOverlay></LoadingSpinner>)
+            postData(filteredDesigns).then((res)=>{
+                setModal(<Modal
+                    code = "success">
+                       Design Deleted Successfully
+                   </Modal>)
+                    setSpinner(null)
+                setTimeout(()=>{
+                   
+                  setModal(null)
+                },500)
+                  setTimeout(()=>{
+                    setDesigns(filteredDesigns)
+                },1000)
+
+            }).catch(err=>{
+                
+                setSpinner(null)
+                setModal(<Modal
+                    code = "error">
+                       Something went wrong try again later
+                   </Modal>)
+                setTimeout(()=>{
+                   
+                  setModal(null)
+                },500)
+            
+
+            })
+            
+        }
         useEffect(()=>{
             updateData()
             setVisible(true)
         },[])
-        console.log(designs)
+        
         return(
            
         <div className="your-design-page">
             
 
-
+            {modal}
+            {spinner}
             {designs?designs.map((ele,index)=>{
-                return  <animated.div style = {fadeIn}>
+                return  (
+                <animated.div style = {fadeIn} className='your-designs'>
                 <DesignCard
                 key = {index}
                 data = {ele}
+                deleteDesign= {DeleteDataHandler}
                 >
-
+                           
                 </DesignCard>
-                </animated.div> 
+                </animated.div>)
+               
                 
             }):null}
         </div>

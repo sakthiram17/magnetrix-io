@@ -23,6 +23,7 @@ function App() {
   const [sidebaron,setSidebaron] = useState(false);
   const [isLoggedIn,setLoggedIn] = useState(false);
   const [credentials,setCredentials] = useState({})
+  const [pageName,setPageName] = useState('Design Tool')
 
 
   
@@ -66,6 +67,7 @@ function App() {
 
   },[])
   const pageChanger = (page)=>{
+    setPageName(page)
     switch(page)
     {
       case 'Design Tool':
@@ -87,7 +89,7 @@ function App() {
   
   const pageSwitchter = (event)=>{
     let pageToDisplay = event.target.innerHTML;
-
+    setPageName(event.target.innerHTML)
     switch(pageToDisplay)
     {
       case 'Design Tool':
@@ -119,6 +121,7 @@ function App() {
       <AuthContext.Provider value = {{isLoggedIn:isLoggedIn,login:login,logout:logout,credentials:credentials,setCreds:setCreds }}>
       <Navbar
       first = "Magne"
+      active = {pageName}
       last = "trix.io"
       off = {offSideBar}
       list ={list}

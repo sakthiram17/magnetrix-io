@@ -3,17 +3,17 @@
     margin:auto;
     width: 80%;
     font-size: 0.9em;
-    font-family: sans-serif;
-    min-width: 400px;
+  
+    width: min(80vw,800px);
     margin-bottom: 2rem;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
   }
   
-  .styled-table thead tr {
-    background-color: #fd0e81;
+  .styled-table thead tr th {
+    background-color: var(--accent-color);
     font-weight: bold;
     font-size: 1.2rem;
-    color: #ffffff;
+    color: white;
     text-align: left;
   }
   .styled-table th,
@@ -22,17 +22,55 @@
   }
   
   .styled-table tbody tr {
-    border-bottom: 1px solid #dddddd;
+    color:white;
+
   }
   
-  .styled-table tbody tr:nth-of-type(even) {
-    background-color: #f3f3f3;
-  }
+
   
   .styled-table tbody tr:last-of-type {
   
   }
   .styled-table tbody tr.active-row {
     font-weight: bold;
-    color: #0b005b;
+    color: white;
   }
+  .styled-table tbody tr:nth-of-type(even) {
+    background-color: #6f6f6f;
+
+  }
+    
+  @media only screen 
+and (max-device-width : 768px) 
+ {
+  .logs *{
+    font-size: 0.7rem;
+  }
+
+  .styled-table tbody tr {
+
+  }
+  .styled-table th,
+  .styled-table td {
+      padding: 5px 5px;
+  }
+  .styled-table thead tr th {
+    font-size: 0.8rem;
+
+  }
+
+  /* Styles */
+}
+.selected-wire{
+  font-size: 1rem;
+  font-weight: bold;
+}
+.selected-wire p{
+  font-size: 1.4rem;
+
+}
+.selected-wire-parent select{
+  font-size: 1.5rem;
+  padding:1rem;
+  font-weight: bold;
+}

@@ -7,8 +7,7 @@ import { useContext } from "react";
 import AuthContext from "../Context/auth-context";
 function isValidEmail(email) {
     // Regular expression for basic email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
+    return email.length>=4;
   }
 
 function isValidPassword(password) {
@@ -165,7 +164,7 @@ const Login = (props)=>{
         type = "email"
         place = "Email"
         name = "email"
-        label = "Enter your Email"
+        label = "Enter unique ID"
         ind = {0}
         valid = {isValid[0]}
         handleChange = {changeHandler}
@@ -195,14 +194,14 @@ const Login = (props)=>{
         <div>
         <button className="btn-primary" disabled = {!isValid[0] || !isValid[0]}
         onClick = {loginHandler}
-        >Submit</button>
+        >{newUser?"Create Account ":"Login"}</button>
         <button className={newUser? "checkbox-checked": "checkbox-button"}
         onClick = {()=>{
             setNewUser(prev=>{
                 return !prev
             })
         }}
-        >Sign In</button>
+        >{newUser?"NewUser": "Returning User"} </button>
         </div>
         {modal}
     </div>)

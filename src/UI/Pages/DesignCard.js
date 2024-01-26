@@ -1,7 +1,11 @@
 import Card from "../Card";
 import "./DesignCard.css"
 import React from "react";
-const DesignCard = ({ data }) => {
+import axios from "axios";
+import Modal from "../Modal";
+import LoadingSpinner from "../LoadingSpinner";
+const DesignCard = (props) => {
+   const {data} = props;
     const {
       core,
       data: timestamp,
@@ -16,8 +20,8 @@ const DesignCard = ({ data }) => {
     return (
        <React.Fragment>
         
-        <div className="table-card">
-  <h2><b> Title of the Design :  {name}</b></h2>
+        <div className="table-card your-designs">
+  <h2><b>{name}</b></h2>
 
   <table className="styled-table combined-table">
     <tbody>
@@ -56,6 +60,12 @@ const DesignCard = ({ data }) => {
       </tr>
     </tbody>
   </table>
+  <button className="btn-primary" onClick = {()=>{
+    props.deleteDesign(name)
+  }}>
+    Delete Design
+  </button>
+ 
 </div>
        </React.Fragment>
     );

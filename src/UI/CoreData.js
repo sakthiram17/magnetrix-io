@@ -12,11 +12,15 @@ const CoreData = (props)=>{
     const showDesignHandler = (inductance,peak_current)=>{
         let turn = inductance*peak_current/(Constants.flux_density*props.core['Core Area']);
         setTurns(Math.ceil(turn))
-        designChecker()
+        setTurns((turn)=>{
+            designChecker(turn)
+            return turn;
+        })
     }
     useEffect (()=>{
         setTurns(null)
     },[props.core])
+
     const [modalState,setModalState] = useState(null)
     const [spinner,setSpinner ] = useState(null)
     const [isValid,setValidity] = useState(true)
@@ -30,20 +34,19 @@ const CoreData = (props)=>{
         return  <p>help </p>
     }
     let resistance;
-    let wireA = (Wire.find(obj=>(obj.name === props.parameters.minWire
-        )))
+
     let area= 0;
-    if(wireA)
+    if(props.selectedWire)
     {
-        area = wireA.Area;
+        area = props.selectedWire.Area;
     }
 
     if(props.parameters.minWire)
     {
          resistance = Constants.rho*length*0.01*1000/(area*10**(-6));
     }
-    const designChecker = ()=>{
-        let t1 = area*turns;
+    const designChecker = (turn)=>{
+        let t1 = area*turn;
         let t2 = props.parameters.windingFactor * props.core['Window Area'];
         if (t2>=t1)
         {
@@ -71,7 +74,7 @@ const CoreData = (props)=>{
                     power:props.parameters.rms * props.parameters.rms * Math.ceil(resistance)/1000
                 }
      
-
+            
             ).then(()=>{
                 setSpinner(null)
                 setModalState(<Modal code = "success" disabled = {false}>
@@ -99,7 +102,7 @@ const CoreData = (props)=>{
     }
 
     return(
-    <div className = {`core-design + ${props.class}`} style = {{...props.style,transition:'0.15s'}}>
+    <div  className = {`core-design + ${props.class}`} style = {{...props.style,transition:'0.15s'}}>
         <div className='generic-text-label'>
             {props.core['SKU']}
         </div>
@@ -113,6 +116,7 @@ const CoreData = (props)=>{
         <div className='generic-text-label'>
             Core Area : {props.core['Core Area']} mm<sup>2</sup>
         </div>
+        <div className="card-secondary">
         <button className ='btn-secondary' onClick={()=>{
             showDesignHandler(props.parameters.inductance,props.parameters.peak)
         }}>
@@ -140,12 +144,15 @@ const CoreData = (props)=>{
         }
          {isValid?
        <div>
-        {LoginContext.isLoggedIn?<button className="btn-primary" onClick = {
+        {LoginContext.isLoggedIn && turns?<button className="btn-primary" onClick = {
             
             ()=>{
                 postData()
-                props.removeCore(props.core)
-            }}>
+                setTimeout(()=>{
+                    props.removeCore(props.core)},1000)
+            }
+            
+            }>
             Save Design in Server
         </button>:null}
         
@@ -168,7 +175,7 @@ const CoreData = (props)=>{
         }
         {spinner}
         {modalState}
-        
+        </div>
         </div>
     )
 

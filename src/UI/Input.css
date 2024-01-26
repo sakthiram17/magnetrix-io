@@ -1,5 +1,5 @@
 .form-number{
-    font-family: 'Arial', sans-serif;
+  
     font-size: 1rem;
     padding: 10px 15px;
     border: none;
@@ -12,12 +12,12 @@
 }
 .form-number:focus{
     outline: none;
-    border: 2px solid rgb(202, 202, 202);
+    border: 3px solid var(--accent-color);
 
 }
 
 .invalid{
-    font-family: 'Arial', sans-serif;
+    
     font-size: 1rem;
     padding: 10px 15px;
     border: 2px solid red;
@@ -31,7 +31,7 @@
 
 .form-label{
     font-weight: bold;
-    font-family: 'Roboto','sans-serif';
+
 }
 .form-input{
     display:flex;
@@ -40,13 +40,20 @@
     font-size: 1.2rem;
  
 }
+.form-input input{
+    color:black;
+}
 .generic-text-label{
     font-weight: bold;
-    font-family: 'Roboto','sans-serif';
+ 
     justify-content: center;
     align-items: center;
 
     margin-top:1rem;
     margin-bottom: 1rem;
     font-size: 1.5rem;
+}
+input[type = "range"]{
+    accent-color: var(--accent-color);
+    fill:var(--accent-color);
 }

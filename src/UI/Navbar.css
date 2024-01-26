@@ -1,23 +1,24 @@
 :root{
-    --primary-nav :ghostwhite;
+    --primary-nav :black;
     --secondary-text: #f5cac2;
-    --secondary-nav : #e60041;
+    --secondary-nav : #8763ff;
     --primary-color : #303179;
     --primary-color-50 : rgb(48, 49, 121,0.5);
     --secondary-color : rgb(20, 24, 80);
     --main-bg : #ededed;
     --secondary-nav-50 : rgb(48, 0, 193,0.5);;
     --secondary-color-50 : rgb(20, 24, 80,0.5);
-    --navtext:black;
-    --navtext-alt :rgb(230, 20, 0);
+    --navtext:white;
+    --navtext-alt :#8763ff;
     --card-bg : rgb(247, 247, 255,0.5);
-    --primary-text : black;
-    --card-box : #ccc;
-    --text-alt: #ff7158;
+    --primary-text : whie;
     --card-hover: #ff1600;
+    --accent-color: #8763ff;
+    --primary-card-bg: #1F2124;;
+    
   }
   html{
-    background-color: ghostwhite;
+    background-color: black;
     margin:0;padding:0;
   }
 #root{
@@ -29,11 +30,11 @@
 body{
     margin:0;padding:0;
 }
+
 .NavBar{
-    font-size:22px;
-    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
-    background-color:var(--primary-nav);
-    width: 100vw;
+    font-size:1.4rem;
+    box-shadow: rgba(0, 0, 0, 0.1) 1px 1px 4px;
+ 
     color:var(--navtext);
     padding: 20px;
     display: flex;
@@ -92,7 +93,7 @@ body{
 
 .NavbarElement:hover,.NavbarElement:active{
     color:var(--secondary-nav);
-    transform: translateY(-5px);
+    transform: translateY(-10px);
    border-radius: 3px;
 
 
@@ -118,6 +119,7 @@ body{
 .NavbarElementAlt:hover,
 .NavbarElementAlt:active{
     transform: translateY(-5px);
+    color:white;
 }
 
 .NavBar button{
@@ -127,8 +129,13 @@ body{
     font-size: 25px;
 }
 .Active{
-    color:var(--secondary-nav);
+    color: var(--accent-color);
+    background-color: var(--accent-color);
     border-radius: 3px;
+    color:white;
+}
+.Active:hover{
+    color:white;
 }
 .header-f{
     color:var(--navtext);
@@ -151,4 +158,13 @@ body{
 }
 .NavBar svg path {
     color:var(--secondary-nav);
+}
+.App{
+    margin: 0;
+    padding:0;
+}
+@media only screen and (max-width: 1300px) {
+    .NavBar {
+        font-size: 1.1rem;
+    }
 }
