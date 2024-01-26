@@ -11,7 +11,7 @@
     font-size: 1.5rem;
     font-weight: bold;
     font-family: 'Poppins';
-    width: max(60vw,400px);
+    width: min(80%,400px);
 }
 
 .success {

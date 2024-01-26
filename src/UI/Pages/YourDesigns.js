@@ -115,9 +115,9 @@ const YourDesigns = ()=>{
             {spinner}
             {designs?designs.map((ele,index)=>{
                 return  (
-                <animated.div style = {fadeIn} className='your-designs'>
+                <animated.div style = {fadeIn} className='' key = {ele}>
                 <DesignCard
-                key = {index}
+                key = {ele}
                 data = {ele}
                 deleteDesign= {DeleteDataHandler}
                 >

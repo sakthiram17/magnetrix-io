@@ -35,7 +35,22 @@ const Login = (props)=>{
         }
         return resp.data;
     }
+
+ 
     const setUsersData = async ()=>{
+        let sameUser;
+        try{
+            sameUser = await getUsersData();
+
+        }
+        catch(err)
+        {
+
+        }
+        if(Object.values(sameUser)[0])
+        {
+            throw new Error('User Already Exists');
+        }
         let resp;
         try{
             resp = await axios.post(`https://parkingslot-690a3-default-rtdb.firebaseio.com/Users.json`,{
@@ -62,6 +77,13 @@ const Login = (props)=>{
                 }
                 catch(err)
                 {
+                    setModal(<Modal code = "error">
+             {err.message}
+            </Modal>)
+            setTimeout(()=>{
+                setModal(null)
+            },750)
+                return null;
         
                 } 
 
