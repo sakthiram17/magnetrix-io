@@ -6,6 +6,7 @@ Magnetrix IO is a web application that empowers users to design inductors tailor
 
 ## Pages
 
+Demo : https://sakthiram17.github.io/magnetrix-io/
 ### Profile
 
 Displays user profile information, including email, name, design count, and status level.
