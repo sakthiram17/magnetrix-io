@@ -40,7 +40,9 @@
 	top: 30px;
 	left: 30px;
 }
-
+.card-container{
+	
+}
 
 .card-container .round {
 	border-radius: 50%;
@@ -61,31 +63,47 @@ p {
 }
 
 .card-container {
-	background-color: #6a35fa;
-	border-radius: 5px;
-	padding-top: 30px;
-	position: relative;
-	width: 350px;
-	max-width: 100%;
-    margin: auto;
-	text-align: center;
-	color:white;
+	background-color:ghostwhite;
+    font-weight: bold;
+    font: 1em sans-serif;
+
+    width: min(600px,80vw);
+    justify-content: center;
+    box-shadow: 0 2px 4px #1b1a1a;
+    border-radius: 1rem;
+    margin-top: 1rem;
+    display:inline-flex;
+  
+
+    padding:2rem;
+    flex-direction: column;
+    margin:1rem;
+    transform: scale(1);
+    opacity: 1;
+    transition: 0.15s;
+    background-color: var(--primary-card-bg);
+    box-shadow: 0 0 20px rgba(0,0,0,0.4);
 	font-weight: bold;
+    align-items: center;
+
+    margin-top:1rem;
+    margin-bottom: 1rem;
+  
+}
+.card-container:hover{
+	transform: scale(1.1);
 }
 
 .card-container .pro {
 	color: #231E39;
 	background-color: #FEBB0B;
 	border-radius: 3px;
-	font-size: 14px;
+
 	font-weight: bold;
 	padding: 3px 7px;
 	position: absolute;
 	top: 30px;
 	left: 30px;
-}
-.card-container img{
-
 }
 
 
@@ -106,15 +124,14 @@ p {
 .skills ul li {
 	border-radius: 2px;
 	display: inline-block;
-	font-size: 12px;
 	margin: 0 7px 7px 0;
 	padding: 7px;
+	font-size: 1.2rem;
 }
 
 footer {
     background-color: #222;
     color: #fff;
-    font-size: 14px;
     bottom: 0;
     position: fixed;
     left: 0;

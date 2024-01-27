@@ -94,10 +94,10 @@ const YourProfile = (props)=>{
     style = {{width : '150px',height:'150px'}}
     />
 	<h3>{LoginContext.credentials.name}</h3>
-	<p key = {1}>ID : {LoginContext.credentials.email} <br/></p>
-    <p >Total Designs : {designs.length}</p>
-    {lastActive?  <p>Last Active : {lastActive}</p>:null}
-	<div class="skills">
+	<p key = {1} className="generic-text-label-2">User ID : {LoginContext.credentials.email} <br/></p>
+    <p className="generic-text-label-2">Total Designs : {designs.length}</p>
+    {lastActive?  <p className="generic-text-label-2">Last Active : {lastActive}</p>:null}
+	<div className="skills generic-text-label" >
 		<h6>Recent Designs</h6>
 		<ul>
 			{designs.slice(0,5).map(ele=>{

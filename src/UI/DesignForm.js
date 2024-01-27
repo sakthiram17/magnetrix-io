@@ -373,7 +373,6 @@ const DesignForm = (props)=>{
                   
                 }
             </div>
-            <TopUsers></TopUsers>
             </div>
 
     )
