@@ -18,6 +18,7 @@ import Login from "./UI/Pages/Login"
 import AuthContext from './UI/Context/auth-context';
 import { useCallback,useEffect } from 'react';
 import YourProfile from './UI/Pages/YourProfile';
+import TopUsers from './UI/Pages/TopUsers';
 function App() {
   const [page,setPage] = useState(<DesignForm></DesignForm>)
   const [sidebaron,setSidebaron] = useState(false);
@@ -82,6 +83,7 @@ function App() {
       case 'Your Profile':
         setPage(<YourProfile></YourProfile>)
         break;
+
         default:setPage(<DesignForm></DesignForm>)
 
     }
@@ -107,6 +109,7 @@ function App() {
       case 'Login':
         setPage(<Login changePage = {pageChanger}></Login>)
         break;
+
       default:setPage(<DesignForm></DesignForm>)
     }
   }
@@ -148,7 +151,7 @@ function App() {
         on = {sidebaron}
       ></Backdrop>
       {page}
-
+  
       </AuthContext.Provider>
     </div>
   );

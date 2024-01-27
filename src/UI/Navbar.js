@@ -7,7 +7,7 @@ import { faDownload } from '@fortawesome/free-solid-svg-icons';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { useContext } from 'react';
 import AuthContext from './Context/auth-context';
-import dp from "../dp.webp"
+import dp from "../dp.jpg"
 import logo from "../UI/Pages/logo192.png"
 /*
 Guide to Use this Navbar

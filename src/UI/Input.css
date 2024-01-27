@@ -1,10 +1,30 @@
+
+.form-input input{
+    background-color: transparent;
+    color:var(--accent-color);
+    transition: 0.15s;
+    
+}
+.form-input input{
+    border:none;
+    border-bottom: solid white 1px;
+
+}
+.form-input input:focus{
+    border:none;
+    border-bottom: solid var(--accent-color) 5px;
+    transform:scale(1.1);
+    opacity: 1;
+
+}
+
 .form-number{
   
     font-size: 1rem;
     padding: 10px 15px;
     border: none;
     font-weight:bold;
-    font-size: 17px;
+    color:var(--accent-color);
     padding:1rem;
     margin: 1rem;
     border: 1px solid rgb(202, 202, 202);
@@ -20,7 +40,7 @@
     
     font-size: 1rem;
     padding: 10px 15px;
-    border: 2px solid red;
+    border-bottom: 2px solid red !important;
 
 
 }
@@ -41,7 +61,9 @@
  
 }
 .form-input input{
-    color:black;
+    color:white;
+    justify-content: center;
+    
 }
 .generic-text-label{
     font-weight: bold;

@@ -61,7 +61,7 @@ p {
 }
 
 .card-container {
-	background-color: var(--accent-color);
+	background-color: #6a35fa;
 	border-radius: 5px;
 	padding-top: 30px;
 	position: relative;
@@ -138,4 +138,9 @@ footer a {
 .card-container .skills{
 
 	margin-bottom: 10rem;
+}
+.round{
+	border-radius: 50%;
+	height:60%;
+	width: 60%;
 }

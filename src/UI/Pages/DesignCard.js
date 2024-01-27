@@ -1,9 +1,10 @@
 import Card from "../Card";
 import "./DesignCard.css"
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import Modal from "../Modal";
 import LoadingSpinner from "../LoadingSpinner";
+
 const DesignCard = (props) => {
    const {data} = props;
     const {
@@ -16,12 +17,13 @@ const DesignCard = (props) => {
       resistance,
       turns,
     } = data;
-  
+    const [deleteModal,setDeleteModal] = useState(null);
     return (
        <React.Fragment>
         
         <div className="table-card your-designs">
   <h2><b>{name}</b></h2>
+  {deleteModal}
 
   <table className="styled-table combined-table">
     <tbody>
@@ -61,7 +63,20 @@ const DesignCard = (props) => {
     </tbody>
   </table>
   <button className="btn-primary" onClick = {()=>{
-    props.deleteDesign(name)
+      setDeleteModal( <Modal code = 'modal-card'>Are you Sure ??
+
+      <button className="btn-danger"onClick={()=>{
+          setDeleteModal(null)
+          props.deleteDesign(timestamp)
+    
+      }
+
+      } >Yes</button>
+      <button className="btn-safe" onClick={()=>{
+          setDeleteModal(null)
+      }}>No</button>
+  </Modal>)
+ 
   }}>
     Delete Design
   </button>

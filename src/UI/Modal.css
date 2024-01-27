@@ -23,3 +23,20 @@
     background-color: #ff1c14;
     color: #fff;
 }
+.modal-card{
+    background-color: black;
+    color:white;
+    position: fixed;
+    top:30%;
+    left:30%;
+    z-index: 100;
+
+}
+.centered{
+
+    position: fixed;
+    top:30%;
+    left:30%;
+    z-index: 100;
+
+}

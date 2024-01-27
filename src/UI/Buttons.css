@@ -80,6 +80,38 @@
   box-shadow: 1px 2px #999;
 }
 
+.btn-danger{
+ background-color: #ff1c14;
+ color:white;
+  outline:none;
+  border:none;
+  border:solid 3px #ff1c14;
+  font-size: 1.5rem;
+  padding: 0.75rem 0.75rem;
+  border-radius: 0.5rem;
+  margin:0.5rem;
+}
+.btn-danger:active{
+  box-shadow: #ff1c14 0px 2px 4px;
+}
+.btn-safe{
+
+    background-color: #5cb85c;
+    color:white;
+     outline:none;
+     border:none;
+     border:solid 3px #5cb85c;
+     font-size: 1.5rem;
+     padding: 0.75rem 0.75rem;
+     border-radius: 0.5rem;
+     margin:0.5rem;
+   }
+   .btn-danger:active{
+     box-shadow: #38e000 0px 2px 4px;
+   }
+
+
+
 .checkbox-checked .checkbox-button::before {
   color: #00f; /* Change color when checked */
 }

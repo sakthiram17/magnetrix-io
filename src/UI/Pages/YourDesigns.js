@@ -9,11 +9,12 @@ import {animated,useSpring} from "react-spring"
 import LoadingSpinner from "../LoadingSpinner";
 import Modal from "../Modal";
 const YourDesigns = ()=>{
-        const [designs,setDesigns] = useState([])
+        const [designs,setDesigns] = useState()
         const LoginContext = useContext(AuthContext);
         const [isVisible,setVisible] = useState(false);
         const [spinner,setSpinner] = useState(null);
         const [modal,setModal] = useState(null);
+        const [deleteModal,setDeleteModal] = useState(null)
         const fadeIn = useSpring({
             opacity: isVisible ? 1 : 0,
             transform: isVisible ? 'scale(1)' : 'scale(0.5)',
@@ -64,16 +65,16 @@ const YourDesigns = ()=>{
             }
         }
 
-        const DeleteDataHandler = (title)=>{
+        const DeleteDataHandler = (date)=>{
             let filteredDesigns = designs.filter(ele=>{
-                return ele.name !== title
+               
+                return new Date(ele.data).getTime() != new Date(date).getTime();
             })
             
-           
             setSpinner(<LoadingSpinner asOverlay></LoadingSpinner>)
             postData(filteredDesigns).then((res)=>{
                 setModal(<Modal
-                    code = "success">
+                    code = "success centered">
                        Design Deleted Successfully
                    </Modal>)
                     setSpinner(null)
@@ -81,6 +82,7 @@ const YourDesigns = ()=>{
                    
                   setModal(null)
                 },500)
+
                   setTimeout(()=>{
                     setDesigns(filteredDesigns)
                 },1000)
@@ -109,24 +111,23 @@ const YourDesigns = ()=>{
         return(
            
         <div className="your-design-page">
-            
-
+           
+            {deleteModal}
             {modal}
             {spinner}
             {designs?designs.map((ele,index)=>{
                 return  (
-                <animated.div style = {fadeIn} className='' key = {ele}>
+                <animated.div style = {fadeIn} className='' key = {index}>
                 <DesignCard
                 key = {ele}
                 data = {ele}
                 deleteDesign= {DeleteDataHandler}
-                >
-                           
+                           >
                 </DesignCard>
                 </animated.div>)
                
                 
-            }):null}
+            }):<div className="generic-text-label">You have no designs yet</div>}
         </div>
 
         )

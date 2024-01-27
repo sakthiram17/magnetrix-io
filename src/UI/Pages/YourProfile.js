@@ -1,9 +1,44 @@
 import React from "react";
 import { useContext,useState,useEffect} from "react";
 import axios from "axios";
-import dp from "../../dp.webp"
+import dp from "../../dp.jpg"
 import AuthContext from "../Context/auth-context";
 import { useSpring,animated } from "react-spring";
+import TopUsers from "./TopUsers";
+function timeAgo(date) {
+    var currentDate = new Date();
+    var timeDifference = currentDate - date;
+    var seconds = Math.floor(timeDifference / 1000);
+    
+    var interval = Math.floor(seconds / 31536000);
+
+    if (interval >= 1) {
+        return interval + " year" + (interval === 1 ? "" : "s") + " ago";
+    }
+
+    interval = Math.floor(seconds / 2592000);
+    if (interval >= 1) {
+        return interval + " month" + (interval === 1 ? "" : "s") + " ago";
+    }
+
+    interval = Math.floor(seconds / 86400);
+    if (interval >= 1) {
+        return interval + " day" + (interval === 1 ? "" : "s") + " ago";
+    }
+
+    interval = Math.floor(seconds / 3600);
+    if (interval >= 1) {
+        return interval + " hour" + (interval === 1 ? "" : "s") + " ago";
+    }
+
+    interval = Math.floor(seconds / 60);
+    if (interval >= 1) {
+        return interval + " minute" + (interval === 1 ? "" : "s") + " ago";
+    }
+
+    return Math.floor(seconds) + " second" + (seconds === 1 ? "" : "s") + " ago";
+}
+
 const YourProfile = (props)=>{
     const [designs,setDesigns] = useState([])
     const LoginContext = useContext(AuthContext);
@@ -44,17 +79,24 @@ const YourProfile = (props)=>{
         updateData()
         setVisible(true)
     },[])
+
+    let lastDesign = designs?designs[0]:null;
+    let lastActive;
+    if(lastDesign)
+    {
+        lastActive = timeAgo(new Date(lastDesign.data))
+    }
     return(
     <animated.div style = {fadeIn}>
-    <div class="card-container">
-	<span class={designs.length>=5?"PRO":"ROOKIE"}>{designs.length>=5?"PRO":"ROOKIE"}</span>
-	<img class="round" src={dp} alt="user"
+    <div className="card-container">
+	<span className={designs.length>=5?"PRO":"ROOKIE"}>{designs.length>=5?"PRO":"ROOKIE"}</span>
+	<img className="round" src={dp} alt="user"
     style = {{width : '150px',height:'150px'}}
     />
 	<h3>{LoginContext.credentials.name}</h3>
-	<p>{LoginContext.credentials.email} <br/></p>
-    <p>Total Designs : {designs.length}</p>
-
+	<p key = {1}>ID : {LoginContext.credentials.email} <br/></p>
+    <p >Total Designs : {designs.length}</p>
+    {lastActive?  <p>Last Active : {lastActive}</p>:null}
 	<div class="skills">
 		<h6>Recent Designs</h6>
 		<ul>
@@ -64,6 +106,8 @@ const YourProfile = (props)=>{
 		</ul>
 	</div>
 </div>
+<h1>Top Users</h1>
+<TopUsers></TopUsers>
 </animated.div>
 )
 }

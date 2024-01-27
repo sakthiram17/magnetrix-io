@@ -1,7 +1,7 @@
 import Card from "./Card";
 import Input from "./Input";
 import { useEffect,useState,useReducer} from "react";
-
+import TopUsers from "./Pages/TopUsers";
 import "./Buttons.css"
 import CoreData from "./CoreData";
 import React from "react";
@@ -249,8 +249,9 @@ const DesignForm = (props)=>{
   
     return(
         <div className="parent-container">
+        
         <Card>
-        <div className = 'form-inductor-design form-label'>
+        <div className = 'form-inductor-design form-label login-box'>
       
             
             <Input
@@ -372,6 +373,7 @@ const DesignForm = (props)=>{
                   
                 }
             </div>
+            <TopUsers></TopUsers>
             </div>
 
     )

@@ -64,7 +64,7 @@ const CoreList = ()=>{
 
     return(
         <div className = "logs">
-      <table class="styled-table">
+      <table className="styled-table">
          <thead>
           <tr>
               <th>Core</th>
