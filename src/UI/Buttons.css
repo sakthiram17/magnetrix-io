@@ -125,3 +125,17 @@
   margin:0.5rem;
   box-shadow: 1px 2px #999;
 }
+@media only screen and (max-width:768px) {
+  .btn-danger{
+    font-size: 1rem;
+  }
+  .btn-primary{
+    font-size: 1rem;
+  }
+  .btn-safe{
+    font-size: 1rem;
+  }
+  .btn-secondary{
+    font-size: 1rem;
+  }
+}

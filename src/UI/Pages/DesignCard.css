@@ -103,3 +103,57 @@
     flex-direction: row;
     flex-wrap: wrap;
   }
+  @media screen and (max-width:768px) {
+    
+    .selected-wire-parent select{
+      font-size: 1rem;
+      padding: 1px;
+  }
+  .selected-wire p{
+    font-size: 1rem;
+  }
+
+ .your-designs {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  .your-designs td, .your-designs th {
+    border: 1px solid #dddddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  /* Heading styles */
+  .your-designs th {
+    background-color: #f2f2f2;
+  }
+
+  }
+  @media only screen and (max-width: 600px) {
+    /* Hide table headers and display them as table rows */
+    .your-designs th, .your-designs td {
+      display: block;
+      width: 100%;
+      box-sizing: border-box;
+    }
+  
+    /* Add some spacing between rows */
+    .your-designs td {
+      margin-bottom: 10px;
+    }
+  
+    /* Add a border to separate the cells */
+    .your-designs td:before {
+      content: attr(data-label);
+      float: left;
+      font-weight: bold;
+    }
+    .table-card:hover{
+      transform: scale(1);
+      transition: 0.15s;
+      padding:0.5rem;
+      margin: 0.5rem;
+    }
+  }

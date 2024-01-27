@@ -86,3 +86,15 @@ input[type = "range"]{
     margin-bottom: 1rem;
     font-size: 1.5rem;
 }
+@media only screen and (max-width:768px) {
+    .generic-text-label{
+        font-size: 0.9rem;
+    }
+    .form-input input:focus{
+        border:none;
+        border-bottom: solid var(--accent-color) 5px;
+        transform:scale(1.02);
+        opacity: 1;
+    
+    }
+}
