@@ -250,7 +250,7 @@ const DesignForm = (props)=>{
     return(
         <div className="parent-container">
         
-        <Card>
+        
         <div className = 'form-inductor-design form-label login-box'>
       
             
@@ -294,7 +294,7 @@ const DesignForm = (props)=>{
              Show suitable Cores
             </button>
             </div>
-          </Card>
+     
             <Card>
             {areaProduct ?
              <React.Fragment>

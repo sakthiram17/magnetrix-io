@@ -7,6 +7,9 @@
     width: min(80vw,800px);
     margin-bottom: 2rem;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+
+  
+
   }
   
   .styled-table thead tr th {
@@ -14,11 +17,15 @@
     font-weight: bold;
     font-size: 1.2rem;
     color: white;
+    padding: 1rem;
+    margin: 1rem;
     text-align: left;
   }
   .styled-table th,
   .styled-table td {
       padding: 12px 15px;
+
+
   }
   
   .styled-table tbody tr {
@@ -34,9 +41,10 @@
   .styled-table tbody tr.active-row {
     font-weight: bold;
     color: white;
+    background-color: black;
   }
   .styled-table tbody tr:nth-of-type(even) {
-    background-color: #6f6f6f;
+    background-color: #6c6c6c;
 
   }
     

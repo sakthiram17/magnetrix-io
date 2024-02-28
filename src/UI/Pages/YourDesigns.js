@@ -122,6 +122,7 @@ const YourDesigns = ()=>{
                 key = {ele}
                 data = {ele}
                 deleteDesign= {DeleteDataHandler}
+                selectedWire = {ele.selectedWire}
                            >
                 </DesignCard>
                 </animated.div>)

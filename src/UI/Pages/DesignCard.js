@@ -15,8 +15,9 @@ const DesignCard = (props) => {
       parameters,
       power,
       resistance,
-      turns,
+      turns
     } = data;
+    console.log(props.selectedWire)
     const [deleteModal,setDeleteModal] = useState(null);
     return (
        <React.Fragment>
@@ -40,7 +41,7 @@ const DesignCard = (props) => {
       <tr>
         <td><strong>Date:</strong> {new Date(timestamp).toLocaleString()}</td>
         <td><strong>Core Area:</strong> {core['Core Area']}</td>
-        <td><strong>Min Wire:</strong> {parameters.minWire}</td>
+        <td><strong>Smallest Wire Possible:</strong> {parameters.minWire}</td>
       </tr>
       <tr>
         <td><strong>Length:</strong> {Math.ceil(length)}cm</td>
@@ -48,7 +49,7 @@ const DesignCard = (props) => {
         <td><strong>Peak:</strong> {parameters.peak}A</td>
       </tr>
       <tr>
-        <td><strong>Power:</strong> {power}W</td>
+        <td><strong>Power  Loss:</strong> {power}W</td>
         <td><strong>SKU:</strong> {core.SKU}</td>
         <td><strong>RMS:</strong> {parameters.rms}A</td>
       </tr>
@@ -59,6 +60,8 @@ const DesignCard = (props) => {
       </tr>
       <tr>
         <td><strong>Turns:</strong> {turns}</td>
+        <td><strong>Wire Chosen:</strong> {props.selectedWire?  props.selectedWire['name']:null}</td>
+        <td><strong>Current Rating:</strong> {props.selectedWire?  props.selectedWire['Current']:null}</td>
       </tr>
     </tbody>
   </table>

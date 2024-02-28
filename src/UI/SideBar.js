@@ -6,7 +6,7 @@ import { faClose } from '@fortawesome/free-solid-svg-icons';
 import './SideBar.css'
 import { useContext } from 'react';
 import AuthContext from './Context/auth-context';
-import dp from "../dp.webp"
+import dp from "../dp.jpg"
 
 const SideBar = (props)=>{
     let navElementList = props.list;

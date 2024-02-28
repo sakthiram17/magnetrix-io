@@ -5,6 +5,7 @@ import axios from "axios";
 import Modal from "../Modal";
 import { useContext } from "react";
 import AuthContext from "../Context/auth-context";
+import ToggleButton from "./ToggleButton"
 function isValidEmail(email) {
     // Regular expression for basic email validation
     return email.length>=4;
@@ -23,7 +24,10 @@ const Login = (props)=>{
     })
     const [newUser,setNewUser] = useState(false)
     const [modal,setModal ]= useState(null)
-
+    const toggleButtonHandler = (event)=>{
+        setNewUser(event.target.checked)
+      
+      }
     const getUsersData = async ()=>{
         let resp;
         try{
@@ -182,6 +186,8 @@ const Login = (props)=>{
     }
 
     return(<div className = 'login-card'>
+
+
         <Input
         type = "email"
         place = "Email"
@@ -217,15 +223,15 @@ const Login = (props)=>{
         <button className="btn-primary" disabled = {!isValid[0] || !isValid[0]}
         onClick = {loginHandler}
         >{newUser?"Create Account ":"Login"}</button>
-        <button className={newUser? "checkbox-checked": "checkbox-button"}
-        onClick = {()=>{
-            setNewUser(prev=>{
-                return !prev
-            })
-        }}
-        >{newUser?"NewUser": "Returning User"} </button>
+       
         </div>
+        
         {modal}
+        <ToggleButton
+        onChange = {toggleButtonHandler}
+        autofresh = {newUser}
+        label = "New User"
+        ></ToggleButton>
     </div>)
 
 

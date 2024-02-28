@@ -71,7 +71,8 @@ const CoreData = (props)=>{
                     resistance:resistance,
                     turns:turns,
                     length:length,
-                    power:props.parameters.rms * props.parameters.rms * Math.ceil(resistance)/1000
+                    power:props.parameters.rms * props.parameters.rms * Math.ceil(resistance)/1000,
+                    selectedWire:props.selectedWire
                 }
      
             
