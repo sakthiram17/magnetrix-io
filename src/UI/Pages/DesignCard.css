@@ -90,7 +90,7 @@
     align-items: center;
     background-color: var(--primary-card-bg);
     box-shadow: rgba(0,0,0,0.5) 2px 2px 4px;
-
+    border-radius: 0;
   }
   .your-designs-page{
     display: flex;
@@ -217,4 +217,58 @@
    .styled-table tbody tr:nth-of-type(even) {
     background-color: var(--primary-card-bg);
 }
+  }
+
+  .accordian-btn{
+    background-color: var(--accent-color);
+    outline: none;
+    border: none;
+    padding: 0.5rem;
+    width: 100%;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  .accordian-btn:hover{
+    opacity: 0.9;
+  }
+  .accordian-btn:active{
+    box-shadow: 0 2px 3px var(--accent-color);
+  }
+  .accordian{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 1rem;
+
+  }
+  .accordian ul{
+    list-style: none;
+
+  }
+  .accordian li{
+
+    padding:0.8rem;
+    font-weight: 400;
+    background-color: #6c6c6c;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: center;
+    font-size: 1.2rem;
+    box-sizing: content-box;
+    margin-top: 1rem;
+    display: inline-block;
+    margin-left: 1rem;
+  }
+
+  .accordian-btn:after {
+    content: '\02795'; /* Unicode character for "plus" sign (+) */
+    font-size: 1.2rem;
+    color: white !important;
+    float: right;
+  }
+  
+  .active:after {
+    content: "\2796"; /* Unicode character for "minus" sign (-) */
   }

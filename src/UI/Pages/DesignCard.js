@@ -1,92 +1,176 @@
 import Card from "../Card";
-import "./DesignCard.css"
+import "./DesignCard.css";
 import React, { useState } from "react";
 import axios from "axios";
 import Modal from "../Modal";
 import LoadingSpinner from "../LoadingSpinner";
 
 const DesignCard = (props) => {
-   const {data} = props;
-    const {
-      core,
-      data: timestamp,
-      length,
-      name,
-      parameters,
-      power,
-      resistance,
-      turns
-    } = data;
-    console.log(props.selectedWire)
-    const [deleteModal,setDeleteModal] = useState(null);
-    return (
-       <React.Fragment>
-        
-        <div className="table-card your-designs">
-  <h2><b>{name}</b></h2>
-  {deleteModal}
-
-  <table className="styled-table combined-table">
-    <tbody>
-      <tr className="heading" id="heading">
-        <td><p className="heading" >Design Information</p></td>
-        <td><p className="heading" >Core Information</p></td>
-        <td><p className="heading"  >Parameters</p></td>
-      </tr>
-      <tr>
-        <td><strong>Name of Design:</strong> {name}</td>
-        <td><strong>Area Product:</strong> {core['Area Product']}</td>
-        <td><strong>Inductance:</strong> {parameters.inductance}µH</td>
-      </tr>
-      <tr>
-        <td><strong>Date:</strong> {new Date(timestamp).toLocaleString()}</td>
-        <td><strong>Core Area:</strong> {core['Core Area']}</td>
-        <td><strong>Smallest Wire Possible:</strong> {parameters.minWire}</td>
-      </tr>
-      <tr>
-        <td><strong>Length:</strong> {Math.ceil(length)}cm</td>
-        <td><strong>Mean Turn Length:</strong> {core['Mean Turn Length']}</td>
-        <td><strong>Peak:</strong> {parameters.peak}A</td>
-      </tr>
-      <tr>
-        <td><strong>Power  Loss:</strong> {power}W</td>
-        <td><strong>SKU:</strong> {core.SKU}</td>
-        <td><strong>RMS:</strong> {parameters.rms}A</td>
-      </tr>
-      <tr>
-        <td><strong>Resistance:</strong> {Math.ceil(resistance)} mΩ</td>
-        <td><strong>Window Area:</strong> {core['Window Area']}</td>
-        <td><strong>Winding Factor:</strong> {parameters.windingFactor}</td>
-      </tr>
-      <tr>
-        <td><strong>Turns:</strong> {turns}</td>
-        <td><strong>Wire Chosen:</strong> {props.selectedWire?  props.selectedWire['name']:null}</td>
-        <td><strong>Current Rating:</strong> {props.selectedWire?  props.selectedWire['Current']:null}</td>
-      </tr>
-    </tbody>
-  </table>
-  <button className="btn-primary" onClick = {()=>{
-      setDeleteModal( <Modal code = 'modal-card'>Are you Sure ??
-
-      <button className="btn-danger"onClick={()=>{
-          setDeleteModal(null)
-          props.deleteDesign(timestamp)
-    
-      }
-
-      } >Yes</button>
-      <button className="btn-safe" onClick={()=>{
-          setDeleteModal(null)
-      }}>No</button>
-  </Modal>)
- 
-  }}>
-    Delete Design
-  </button>
- 
-</div>
-       </React.Fragment>
-    );
+  const { data } = props;
+  const {
+    core,
+    data: timestamp,
+    length,
+    name,
+    parameters,
+    power,
+    resistance,
+    turns,
+  } = data;
+  const [accordianList, setAccordian] = useState([true, false, false]);
+  const [deleteModal, setDeleteModal] = useState(null);
+  const handleAccordianChange = (index) => {
+    let temp = [...accordianList];
+    temp[index] = !temp[index];
+    setAccordian(temp);
   };
-  
-  export default DesignCard;
+
+  return (
+    <React.Fragment>
+      <div className="table-card your-designs">
+        <h2>
+          <b>{name}</b>
+        </h2>
+        {deleteModal}
+        <div className="accordian">
+          <button
+            className={
+              accordianList[0] ? "accordian-btn active" : "accordian-btn"
+            }
+            onClick={() => {
+              handleAccordianChange(0);
+            }}
+          >
+            General Information
+          </button>
+          {accordianList[0] ? (
+            <ul>
+              <li>
+                <strong>Name of Design:</strong> {name}
+              </li>
+              <li>
+                <strong>Length:</strong> {Math.ceil(length)}cm
+              </li>
+              <li>
+                <strong>Power Loss:</strong> {power}W
+              </li>
+              <li>
+                <strong>Resistance:</strong> {Math.ceil(resistance)} mΩ
+              </li>
+              <li>
+                <strong>Date:</strong> {new Date(timestamp).toLocaleString()}
+              </li>
+              <li>
+                <strong>Turns:</strong> {turns}
+              </li>
+            </ul>
+          ) : null}
+        </div>
+
+        <div className="accordian">
+          <button
+            className={
+              accordianList[1] ? "accordian-btn active" : "accordian-btn"
+            }
+            onClick={() => {
+              handleAccordianChange(1);
+            }}
+          >
+            Core Information
+          </button>
+          {accordianList[1] ? (
+            <ul>
+              <li>
+                <strong>Area Product:</strong> {core["Area Product"]}
+              </li>
+              <li>
+                <strong>Core Area:</strong> {core["Core Area"]}
+              </li>
+              <li>
+                <strong>Mean Turn Length:</strong> {core["Mean Turn Length"]}
+              </li>
+              <li>
+                <strong>SKU:</strong> {core.SKU}
+              </li>
+              <li>
+                <strong>Window Area:</strong> {core["Window Area"]}
+              </li>
+            </ul>
+          ) : null}
+        </div>
+
+        <div className="accordian">
+          <button
+            className={
+              accordianList[2] ? "accordian-btn active" : "accordian-btn"
+            }
+            onClick={() => {
+              handleAccordianChange(2);
+            }}
+          >
+            Parameters
+          </button>
+          {accordianList[2] ? (
+            <ul>
+              <li>
+                <strong>Inductance:</strong> {parameters.inductance}µH
+              </li>
+              <li>
+                <strong>Smallest Wire Possible:</strong> {parameters.minWire}
+              </li>
+              <li>
+                <strong>Peak:</strong> {parameters.peak}A
+              </li>
+              <li>
+                <strong>RMS:</strong> {parameters.rms}A
+              </li>
+              <li>
+                <strong>Winding Factor:</strong> {parameters.windingFactor}
+              </li>
+              <li>
+                <strong>Wire Chosen:</strong>{" "}
+                {props.selectedWire ? props.selectedWire["name"] : parameters.minWire}
+              </li>
+              <li>
+                <strong>Current Rating:</strong>{" "}
+                {props.selectedWire ? props.selectedWire["Current"] : parameters.rms}
+              </li>
+            </ul>
+          ) : null}
+        </div>
+
+        <button
+          className="btn-primary"
+          onClick={() => {
+            setDeleteModal(
+              <Modal code="modal-card">
+                Are you Sure ??
+                <button
+                  className="btn-danger"
+                  onClick={() => {
+                    setDeleteModal(null);
+                    props.deleteDesign(timestamp);
+                  }}
+                >
+                  Yes
+                </button>
+                <button
+                  className="btn-safe"
+                  onClick={() => {
+                    setDeleteModal(null);
+                  }}
+                >
+                  No
+                </button>
+              </Modal>
+            );
+          }}
+        >
+          Delete Design
+        </button>
+      </div>
+    </React.Fragment>
+  );
+};
+
+export default DesignCard;

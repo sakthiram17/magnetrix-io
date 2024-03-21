@@ -9,6 +9,7 @@ import Wire from "./Wire";
 import { v4 as uuid } from 'uuid';
 import { useSpring, animated,useTransition } from 'react-spring';
 import Constants from "./Constants";
+import ToggleButton from "./Pages/ToggleButton";
 const coreList = [
     {
       "SKU": "ETD-29/16/10",
@@ -253,7 +254,7 @@ const DesignForm = (props)=>{
         
         <div className = 'form-inductor-design form-label login-box'>
       
-            
+           
             <Input
             type = "number"
             label = "Inductance (&micro;H)"
@@ -286,15 +287,17 @@ const DesignForm = (props)=>{
             ind = {3}
             handleChange= {NumberFieldOnChange}
             ></Input>
+            
              <button
              disabled = {!isValid[0] || !isValid[1] || !isValid[2]}
              className="btn-primary"
              onClick = {coreDisplayHanlder}
              >
+            
              Show suitable Cores
             </button>
             </div>
-     
+         
             <Card>
             {areaProduct ?
              <React.Fragment>
